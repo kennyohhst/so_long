@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 00:40:08 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/01/17 20:13:57 by code             ###   ########.fr       */
+/*   Updated: 2023/01/17 20:37:20 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(void)
 		free(temp_str);
 		temp_str = get_next_line(fd);	
 	}
-	full_map = split(str, '\n');
+	full_map = ft_split(str, '\n');
 	free(str);
 	while (full_map[i] != NULL)
 	{

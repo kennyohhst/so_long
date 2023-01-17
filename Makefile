@@ -3,7 +3,7 @@ CC = gcc
 FLAGS = -g #-Wall -Werror -Wextra -fsanitize=address
 SRC = ft_split.c ft_substr.c ft_strlcpy.c ft_strlen.c ft_strdup.c ft_memcpy.c \
 		ft_free_s.c main.c get_next_line.c get_next_line_utils.c
-HEAD = so_long.h.h
+HEAD = so_long.h
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:22:55 by code              #+#    #+#             */
-/*   Updated: 2023/01/17 20:30:53 by code             ###   ########.fr       */
+/*   Updated: 2023/01/17 20:44:16 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@
 # include <stddef.h>
 # include <limits.h>
 
-//	STRUCT FOR LINKED LIST
-
-typedef struct list
-{
-	int			num;
-	int			index;
-	struct list	*next;
-}t_stack;
-
-//	FUNCTIONS NEEDED FOR PUSH_SWAP
-
 char		**ft_split(char const *s, char c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -41,5 +30,10 @@ char		*ft_strdup(const char *s1);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		ft_free_s(char **string);
 char		*get_next_line(int fd);
+void		*ft_calloc(size_t count, size_t size);
+char		*strljoin(char *s1, char *s2, int lenght, int x);
+char		*freegnl(char *s);
+int			nl(const char *s);
+int			lookend(const char *s);
 
 #endif
