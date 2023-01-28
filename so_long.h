@@ -6,12 +6,16 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:22:55 by code              #+#    #+#             */
-/*   Updated: 2023/01/17 20:44:16 by code             ###   ########.fr       */
+/*   Updated: 2023/01/26 19:48:46 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# ifndef BUFFERSIZE
+#  define BUFFERSIZE 42
+# endif
 
 //	LIBRARIES
 
@@ -35,5 +39,7 @@ char		*strljoin(char *s1, char *s2, int lenght, int x);
 char		*freegnl(char *s);
 int			nl(const char *s);
 int			lookend(const char *s);
+void		check_map(char	**full_map);
+
 
 #endif

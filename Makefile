@@ -1,8 +1,8 @@
-NAME = so_long.h
+NAME = so_long
 CC = gcc
-FLAGS = -g #-Wall -Werror -Wextra -fsanitize=address
+FLAGS = -g -Wall -Werror -Wextra -fsanitize=address
 SRC = ft_split.c ft_substr.c ft_strlcpy.c ft_strlen.c ft_strdup.c ft_memcpy.c \
-		ft_free_s.c main.c get_next_line.c get_next_line_utils.c
+		ft_free_s.c main.c get_next_line.c get_next_line_utils.c check_map.c
 HEAD = so_long.h
 OBJ = $(SRC:.c=.o)
 
