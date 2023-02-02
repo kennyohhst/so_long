@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:22:55 by code              #+#    #+#             */
-/*   Updated: 2023/01/26 19:48:46 by code             ###   ########.fr       */
+/*   Updated: 2023/02/02 16:00:46 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@
 # include <string.h>
 # include <stddef.h>
 # include <limits.h>
+# include <stdbool.h>
+
+//	STRUCT_MAP
+
+typedef struct map_tiles
+{
+	int		x;
+	int		y;
+	int		type;
+	bool	reached;
+	
+	
+}tile;
 
 char		**ft_split(char const *s, char c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
