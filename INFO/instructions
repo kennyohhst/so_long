@@ -1,0 +1,17 @@
+
+make an mlx instance				= mlx_t		*struct_name = mlx_init(int_size_of_window, int_size_of_window, name_of_window, resizeable_bool)
+png into texture_struct				= mlx_texture_t *struct_name = mlx_load_png("name_of.png");
+texture_struct into image_struct	= mlx_image_t	*struct_name = mlx_texture_to_image(mlx_struct, texture_struct,);
+put image to initilized window		= mlx_image_to_window(mlx_struct, image_struct, position_image, position_image);
+put window onto screen				= mlx_loop(mlx_struct)
+mlx_loop_hook does not search for mlx_loop, so mlx_loop is the last in line
+
+what needs to happen?
+build_game needs to do the following:
+-	build the MLX instance
+-	insert images
+-	put it all in place
+
+run game needs to do the following:
+-	mlx_loop_hook
+-	mlx_loop

@@ -6,17 +6,17 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:21:18 by code              #+#    #+#             */
-/*   Updated: 2023/01/28 16:35:55 by code             ###   ########.fr       */
+/*   Updated: 2023/03/13 16:18:08 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int ft_strchr(char *s, int c)
+static int	ft_strchr(char *s, int c)
 {
-	int i;
-	int slen;
-	int count;
+	int	i;
+	int	slen;
+	int	count;
 
 	count = 0;
 	i = 0;
@@ -30,48 +30,28 @@ static int ft_strchr(char *s, int c)
 	return (count);
 }
 
-void	playable_map(char **full_map, int x, char c)
+static void	one_of_each(char **full_map, char c)
 {
-	int	y;
-	
-	y = 0;
-	while (full_map[x] && full_map[x][y] != '\0')
-	{
-		if (full_map[x][y] == c)
-			if (full_map[x][y - 1] == '1')
-				if (full_map[x][y + 1] == '1')
-					if (full_map[x - 1][y] == '1')
-						if (full_map[x + 1][y] == '1')
-							exit(write(2, "can't play", 11));
-		y++;	
-	}	
-	
-}
-
-static void one_of_each(char **full_map, char c)
-{
-	int i;
-	int x;
+	int	i;
+	int	x;
 
 	i = 1;
 	x = 0;
 	while (full_map[i])
 	{
 		x += ft_strchr(full_map[i], c);
-		if (ft_strchr(full_map[i], c) == 1)
-			playable_map(full_map, i, c);
-		if (x > 1)
-			exit(write(2, "ERROr", 6));
+		if (x > 1 && c != 'C')
+			exit(write(2, "Error\none_of_each_1\n", 20));
 		i++;
 	}
 	if (x < 1)
-		exit(write(2, "ERROr", 6));
+		exit(write(2, "Error\none_of_each_2\n", 20));
 }
 
-static int correct_char(char *s)
+static int	correct_char(char *s)
 {
-	int i;
-	int slen;
+	int	i;
+	int	slen;
 
 	i = 0;
 	slen = ft_strlen(s);
@@ -85,9 +65,9 @@ static int correct_char(char *s)
 	return (1);
 }
 
-static int check_char(char **full_map)
+static int	check_char(char **full_map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!full_map)
@@ -104,8 +84,8 @@ static int check_char(char **full_map)
 	return (0);
 }
 
-void check_map(char **full_map)
+void	check_map(char **full_map)
 {
 	if (check_char(full_map))
-		exit(write(2, "Error\n", 6));
+		exit(write(2, "Error\ncheck_map_1\n", 18));
 }

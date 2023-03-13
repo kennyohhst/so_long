@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 19:07:05 by kkalika           #+#    #+#             */
-/*   Updated: 2023/02/09 11:39:14 by code             ###   ########.fr       */
+/*   Created: 2023/03/13 16:07:17 by code              #+#    #+#             */
+/*   Updated: 2023/03/13 16:08:53 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+void	check(char c, t_god *game_data)
 {
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (c == 'C')
+	{
+		game_data->full_map[game_data->p_y / 42][game_data->p_x / 42] = '0';
+		game_data->collectables -= 1;
+	}
 }

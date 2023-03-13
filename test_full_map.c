@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   test_full_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 19:07:05 by kkalika           #+#    #+#             */
-/*   Updated: 2023/02/09 11:39:14 by code             ###   ########.fr       */
+/*   Created: 2023/03/02 15:30:51 by code              #+#    #+#             */
+/*   Updated: 2023/03/02 15:34:09 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+void	test_full_map(char **full_map)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	while(full_map[i])
+		printf("%s\n", full_map[i++]);
 }

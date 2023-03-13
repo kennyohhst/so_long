@@ -6,91 +6,32 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 00:40:08 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/01/28 16:03:20 by code             ###   ########.fr       */
+/*   Updated: 2023/03/13 16:28:13 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "MLX42/MLX42.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <memory.h>
+#include "MLX42/include/MLX42/MLX42.h"
 #include "so_long.h"
-#include <fcntl.h>
 
-void	middle_walls(char *full_map)
+int	main(int argc, char **argv)
 {
-	if(full_map[0] != '1' || full_map[ft_strlen(full_map) - 1] != '1')
-		exit(write(2, "ErRor", 6));
-}
+	t_god			*game_data;
+	char			**temp;
 
-void	first_last_wall(char *first_last_wall)
-{
-	int	i;
-
-	i = 0;
-	while (first_last_wall[i] != '\0')
-	{
-		if (first_last_wall[i] != '1')
-			exit(write(2, "eRRor\n", 6));
-		i++;
-	}	
-}
-
-void	check_shape(char **full_map)
-{
-	first_last_wall(full_map[0]);
-	size_t	length_wall;
-	size_t	i;
-	
-	i = 1;
-	length_wall = ft_strlen(full_map[0]);
-	while (full_map[i])
-	{
-		if (ft_strlen(full_map[i]) != length_wall)
-			exit(write(2, "ERROR", 6));
-		middle_walls(full_map[i]);
-		i++;
-	}
-	first_last_wall(full_map[i - 1]);	
-}
-
-char	**parse(void)
-{
-	int		fd;
-	char	*temp_str;
-	char	*str;
-	char	**full_map;
-
-	fd = open("bla.ber", O_RDONLY);
-	temp_str = get_next_line(fd);
-	while (temp_str)
-	{
-		str = strljoin(str, temp_str, strlen(temp_str), 0);
-		free(temp_str);
-		temp_str = get_next_line(fd);	
-	}
-	full_map = ft_split(str, '\n');
-	check_shape(full_map);
-	free(str);
-	close(fd);
-	return (full_map);
-}
-
-int	main(void)
-{
-	char	**full_map;
-	int		i = 0;
-
-	full_map = parse();
-	check_map(full_map);
-
-	//	TEST
-	while (full_map[i] != NULL)
-	{
-		printf("%s\n", full_map[i]);
-		i++;
-	}
-	ft_free_s(full_map);
+	if (argc != 2)
+		return (write(2, "Error\nNo map\n", 13));
+	game_data = malloc(sizeof(t_god));
+	game_data->textures = malloc(sizeof(t_game));
+	if (!game_data || !game_data->textures)
+		exit(write(2, "Error\ngame/full_map error\n", 26));
+	game_data->full_map = parse(&temp, argv[1]);
+	check_map(game_data->full_map);
+	game_data->collectables = prep_flood(temp);
+	ft_free_s(temp);
+	build_game(&game_data);
+	mlx_key_hook(game_data->mlx, &run_game, game_data);
+	mlx_loop(game_data->mlx);
+	mlx_terminate(game_data->mlx);
+	ft_free_s(game_data->full_map);
 	return (0);
 }
