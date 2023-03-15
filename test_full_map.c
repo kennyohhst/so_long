@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:30:51 by code              #+#    #+#             */
-/*   Updated: 2023/03/02 15:34:09 by code             ###   ########.fr       */
+/*   Updated: 2023/03/14 14:24:36 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	test_full_map(char **full_map)
 	int	i;
 
 	i = 0;
-	while(full_map[i])
+	while (full_map[i])
 		printf("%s\n", full_map[i++]);
 }

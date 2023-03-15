@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:22:55 by code              #+#    #+#             */
-/*   Updated: 2023/03/13 16:36:37 by code             ###   ########.fr       */
+/*   Updated: 2023/03/15 17:56:32 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <memory.h>
+# include <stdarg.h>
 
 //	STRUCT_MAP
 
@@ -65,6 +66,19 @@ typedef struct g_struct
 	int		p_y;
 	int		moves;
 }t_god;
+
+
+int		ft_printf(const char *args, ...);
+void	ft_putchar_x(char c);
+int		ft_putnbr_x(unsigned long long i, unsigned int base, int count);
+void	ft_putchar(char c);
+int		ft_putnbr(long long i, int base, int count);
+int		ft_putnbr_p(unsigned long long i, unsigned int base, int count);
+int		ft_putstr(char *str);
+int		ft_types(va_list *argl, char *arg);
+
+
+
 
 void		check(char c, t_god *game_data);
 char		**ft_split(char const *s, char c);

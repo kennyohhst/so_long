@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:48:31 by code              #+#    #+#             */
-/*   Updated: 2023/03/13 16:34:24 by code             ###   ########.fr       */
+/*   Updated: 2023/03/15 18:24:20 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	key_left(mlx_key_data_t keydata, t_god *data)
 				mlx_image_to_window(data->mlx, data->textures->i_exit,
 					(data->p_x + 42), data->p_y);
 			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
-			data->moves++;	
-		printf("this%d\n", data->moves);
+			data->moves++;
+			ft_printf("moves:	%d\n", data->moves);
 		}
 	}
 }
@@ -47,7 +47,7 @@ static void	key_right(mlx_key_data_t keydata, t_god *data)
 					(data->p_x - 42), data->p_y);
 			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
 			data->moves++;
-			printf("this%d\n", data->moves);
+			ft_printf("moves:	%d\n", data->moves);
 		}	
 	}
 }
@@ -67,7 +67,7 @@ static void	key_down(mlx_key_data_t keydata, t_god *data)
 					data->p_x, (data->p_y - 42));
 			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
 			data->moves++;
-			printf("this%d\n", data->moves);
+			ft_printf("moves:	%d\n", data->moves);
 		}	
 	}	
 }
@@ -87,7 +87,7 @@ static void	key_up(mlx_key_data_t keydata, t_god *data)
 					data->p_x, (data->p_y + 42));
 			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
 			data->moves++;
-			printf("this%d\n", data->moves);
+			ft_printf("moves:%d\n", data->moves);
 		}	
 	}
 }
@@ -102,15 +102,15 @@ void	run_game(mlx_key_data_t keydata, void *game_data)
 	key_left(keydata, data);
 	key_right(keydata, data);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		exit(write(2, "good job\n", 10));
+		exit(write(2, "escape pressed\n", 15));
 	data->textures->i_player->instances[0].x = data->p_x;
 	data->textures->i_player->instances[0].y = data->p_y;
 	mlx_image_to_window(data->mlx, data->textures->i_player,
 		data->p_x, data->p_y);
 	if (data->collectables <= 0
 		&& data->full_map[(data->p_y / 42)][data->p_x / 42] == 'E')
-		{
-			data->moves += 1;
-			exit(write(1, "exit nice\n", 11));
-		}
+	{
+		data->moves += 1;
+		exit(write(1, "finished, congrats!\n", 20));
+	}
 }
