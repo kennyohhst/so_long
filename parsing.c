@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:17:01 by code              #+#    #+#             */
-/*   Updated: 2023/03/13 16:16:54 by code             ###   ########.fr       */
+/*   Updated: 2023/03/15 19:21:43 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	check_shape(char **full_map)
 	size_t	length_wall;
 	size_t	i;
 
+	if (!full_map)
+		exit(write(2, "Error\nempty map\n", 16));
 	first_last_wall(full_map[0]);
 	i = 1;
 	length_wall = ft_strlen(full_map[0]);

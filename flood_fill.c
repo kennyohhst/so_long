@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 01:02:50 by code              #+#    #+#             */
-/*   Updated: 2023/03/13 16:18:28 by code             ###   ########.fr       */
+/*   Updated: 2023/03/15 19:27:49 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	prep_flood(char **full_map)
 	collect = flood->collectables;
 	flood_it(flood->player_x, flood->player_y, &flood, full_map);
 	if (flood->collectables != 0 || flood->exit != 0)
-		exit(write(2, "Error\nprep_flood_1\n", 19));
+		exit(write(2, "Error\nprep_flood\n", 17));
 	free(flood);
 	return (collect);
 }

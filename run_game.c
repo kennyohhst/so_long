@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:48:31 by code              #+#    #+#             */
-/*   Updated: 2023/03/15 18:24:20 by code             ###   ########.fr       */
+/*   Updated: 2023/03/16 16:44:42 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ static void	key_left(mlx_key_data_t keydata, t_god *data)
 			if (data->full_map[data->p_y / 42][(data->p_x / 42) + 1] == 'E')
 				mlx_image_to_window(data->mlx, data->textures->i_exit,
 					(data->p_x + 42), data->p_y);
-			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
+			if (data->full_map[data->p_y / 42][data->p_x / 42] == 'C')
+			{
+				data->full_map[data->p_y / 42][data->p_x / 42] = '0';
+				data->collectables -= 1;
+			}
 			data->moves++;
 			ft_printf("moves:	%d\n", data->moves);
 		}
@@ -45,7 +49,11 @@ static void	key_right(mlx_key_data_t keydata, t_god *data)
 			if (data->full_map[data->p_y / 42][(data->p_x / 42) - 1] == 'E')
 				mlx_image_to_window(data->mlx, data->textures->i_exit,
 					(data->p_x - 42), data->p_y);
-			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
+			if (data->full_map[data->p_y / 42][data->p_x / 42] == 'C')
+			{
+				data->full_map[data->p_y / 42][data->p_x / 42] = '0';
+				data->collectables -= 1;
+			}
 			data->moves++;
 			ft_printf("moves:	%d\n", data->moves);
 		}	
@@ -65,7 +73,11 @@ static void	key_down(mlx_key_data_t keydata, t_god *data)
 			if (data->full_map[(data->p_y / 42) - 1][(data->p_x / 42)] == 'E')
 				mlx_image_to_window(data->mlx, data->textures->i_exit,
 					data->p_x, (data->p_y - 42));
-			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
+			if (data->full_map[data->p_y / 42][data->p_x / 42] == 'C')
+			{
+				data->full_map[data->p_y / 42][data->p_x / 42] = '0';
+				data->collectables -= 1;
+			}
 			data->moves++;
 			ft_printf("moves:	%d\n", data->moves);
 		}	
@@ -85,9 +97,13 @@ static void	key_up(mlx_key_data_t keydata, t_god *data)
 			if (data->full_map[(data->p_y / 42 + 1)][(data->p_x / 42)] == 'E')
 				mlx_image_to_window(data->mlx, data->textures->i_exit,
 					data->p_x, (data->p_y + 42));
-			check(data->full_map[data->p_y / 42][data->p_x / 42], data);
+			if (data->full_map[data->p_y / 42][data->p_x / 42] == 'C')
+			{
+				data->full_map[data->p_y / 42][data->p_x / 42] = '0';
+				data->collectables -= 1;
+			}
 			data->moves++;
-			ft_printf("moves:%d\n", data->moves);
+			ft_printf("moves:	%d\n", data->moves);
 		}	
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 00:40:08 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/03/13 16:28:13 by code             ###   ########.fr       */
+/*   Updated: 2023/03/16 16:29:32 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	main(int argc, char **argv)
 	char			**temp;
 
 	if (argc != 2)
-		return (write(2, "Error\nNo map\n", 13));
+		exit((write(2, "Error\ncheck input\n", 18)));
 	game_data = malloc(sizeof(t_god));
 	game_data->textures = malloc(sizeof(t_game));
 	if (!game_data || !game_data->textures)
-		exit(write(2, "Error\ngame/full_map error\n", 26));
+		exit(write(2, "error\ngame/full_map error\n", 26));
 	game_data->full_map = parse(&temp, argv[1]);
 	check_map(game_data->full_map);
 	game_data->collectables = prep_flood(temp);

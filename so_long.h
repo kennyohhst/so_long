@@ -6,7 +6,7 @@
 /*   By: code <code@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 15:22:55 by code              #+#    #+#             */
-/*   Updated: 2023/03/15 17:56:32 by code             ###   ########.fr       */
+/*   Updated: 2023/03/16 16:48:11 by code             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,8 @@
 //	LIBRARIES
 
 # include "MLX42/include/MLX42/MLX42.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
-# include <stddef.h>
-# include <limits.h>
-# include <stdbool.h>
 # include <fcntl.h>
 # include <memory.h>
 # include <stdarg.h>
@@ -80,7 +75,6 @@ int		ft_types(va_list *argl, char *arg);
 
 
 
-void		check(char c, t_god *game_data);
 char		**ft_split(char const *s, char c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -97,8 +91,6 @@ int			lookend(const char *s);
 void		check_map(char	**full_map);
 char		**parse(char ***temp, char *map_input);
 int			prep_flood(char **full_map);
-void		draw_texture(t_god **game_data);
-void		test_full_map(char **full_map);
 void		build_game(t_god **game_data);
 void		run_game(mlx_key_data_t keydata, void *game_data);
 

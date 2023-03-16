@@ -3,21 +3,25 @@ CC = gcc
 FLAGS = -g -Wall -Werror -Wextra -fsanitize=address
 SRC = ft_split.c ft_substr.c ft_strlcpy.c ft_strlen.c ft_strdup.c ft_memcpy.c \
 		ft_free_s.c main.c get_next_line.c get_next_line_utils.c check_map.c \
-		parsing.c flood_fill.c draw_texture.c test_full_map.c build_game.c \
-		run_game.c check.c ft_printf.c ft_printf_utils.c
+		parsing.c flood_fill.c build_game.c \
+		run_game.c ft_printf.c ft_printf_utils.c
 HEAD = so_long.h
-OBJ = $(SRC:.c=.o)
+OBJDIR = build
+OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
-all: $(NAME)
+all: $(OBJDIR) $(NAME)
 
-$(OBJ): $(SRC)
-	$(CC) -c $(FLAGS) $(SRC)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)/%.o: %.c $(HEAD)
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $@ MLX42/build/libmlx42.a -ldl -lglfw -lm -pthread -I MLX42/include
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
